@@ -730,11 +730,11 @@
 }
 
 .journey.is-enhanced .journey__track {
-  display: flex;
-  gap: clamp(1rem, 1.8vw, 1.5rem);
-  width: max-content;
-  padding-inline: var(--gutter);
-  will-change: transform;
+   display: flex;
+   gap: clamp(1rem, 1.8vw, 1.5rem);
+   width: max-content;
+   padding-inline: var(--gutter);
+   flex-wrap: nowrap;
 }
 
 .journey.is-enhanced .journey-card {
@@ -801,6 +801,11 @@
   color: var(--ink);
 }
 
+.journey.is-enhanced .journey__track {
+   display: flex;
+   gap: 1rem;
+   flex-wrap: nowrap;
+}
 /* --------------------------------------------------------------------------
    Gallery
    -------------------------------------------------------------------------- */
