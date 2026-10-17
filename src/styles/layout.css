@@ -604,7 +604,7 @@
   display: flex;
   flex-direction: column;
   min-height: 300px;
-  padding: clamp(1.3rem, 2.2vw, 1.8rem);
+  padding: clamp(1.5rem, 2.5vw, 2rem);
   border: 1.5px solid var(--ink);
   border-radius: var(--radius-md);
   box-shadow: 6px 6px 0 rgb(27 18 12 / 8%);
@@ -664,7 +664,7 @@
 
 .journey-card__image {
   width: 100%;
-  height: 180px;
+  height: 300px;
   object-fit: cover;
   border-radius: var(--radius-md);
   margin-top: 0.7rem;
@@ -739,8 +739,8 @@
 
 .journey.is-enhanced .journey-card {
   flex: 0 0 auto;
-  width: clamp(280px, 32vw, 430px);
-  min-height: clamp(280px, 44vh, 400px);
+  width: clamp(300px, 34vw, 500px);
+  min-height: clamp(340px, 52vh, 500px);
   transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
 }
 
