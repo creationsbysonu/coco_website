@@ -11,6 +11,7 @@ export function initGallery({ lenis }) {
   if (!dialog || !items.length) return;
 
   const image = dialog.querySelector('[data-lightbox-img]');
+  const video = dialog.querySelector('[data-lightbox-video]');
   const caption = dialog.querySelector('[data-lightbox-caption]');
   const meta = dialog.querySelector('[data-lightbox-meta]');
   const counter = dialog.querySelector('[data-lightbox-count]');
@@ -23,16 +24,39 @@ export function initGallery({ lenis }) {
   let lastTrigger = null;
   let customCursorWasActive = false;
 
+  const resetVideo = () => {
+    if (!video) return;
+    video.pause();
+    video.removeAttribute('src');
+    video.poster = '';
+    video.load();
+    video.hidden = true;
+  };
+
   const render = () => {
     const item = items[index];
     if (!item) return;
 
     const sourceImage = item.querySelector('img');
-    image.src = item.dataset.full || sourceImage?.src || '';
-    image.alt = sourceImage?.alt || item.dataset.caption || '';
     caption.textContent = item.dataset.caption || 'Coco the Orange';
     meta.textContent = item.dataset.type || 'Gallery';
     counter.textContent = `${pad2(index + 1)} / ${pad2(items.length)}`;
+
+    // Reels play inline; photos use the hi-res data-full still.
+    if (item.dataset.video && video) {
+      image.hidden = true;
+      video.hidden = false;
+      video.poster = item.dataset.full || '';
+      video.src = item.dataset.video;
+      video.currentTime = 0;
+      video.play?.().catch(() => {});
+      return;
+    }
+
+    resetVideo();
+    image.hidden = false;
+    image.src = item.dataset.full || sourceImage?.src || '';
+    image.alt = sourceImage?.alt || item.dataset.caption || '';
   };
 
   const open = (itemIndex, trigger) => {
@@ -100,6 +124,7 @@ export function initGallery({ lenis }) {
   dialog.addEventListener('close', () => {
     if (!isOpen) return;
     isOpen = false;
+    resetVideo();
     unlockScroll(lenis);
 
     if (customCursorWasActive) {

@@ -78,8 +78,10 @@ Node 20.19+ is recommended (Vite 8 requirement).
 
 ```
 .
-├── index.html                  # All page content, SEO, media placeholders
+├── index.html                  # All page content, SEO and real media
+├── media/                      # Original source photos/videos (not served)
 ├── public/
+│   ├── media/                  # Optimised assets served at /media/...
 │   ├── favicon.svg
 │   ├── apple-touch-icon.png
 │   ├── robots.txt
@@ -115,33 +117,33 @@ Node 20.19+ is recommended (Vite 8 requirement).
 
 ## Replacing the media
 
-Every image and video is a **dimension-labelled placeholder** from
-[placehold.co](https://placehold.co) wrapped in a clear comment:
+Real Coco media lives in `public/media/` and is wired into `index.html` (served at
+`/media/...`). The table below documents every slot and the file that fills it.
 
-```html
-<!-- MANUALLY INSERT COCO MEDIA HERE — GALLERY 01 — 900 × 1200 -->
-<img src="…" alt="…" width="900" height="1200" loading="lazy" decoding="async" />
-<!-- END MANUALLY INSERT COCO MEDIA HERE -->
-```
-
-Search `index.html` for `MANUALLY INSERT COCO MEDIA HERE` to find every slot.
-
-| Slot | Placeholder size | Where / notes |
+| Slot | Size | File |
 | --- | --- | --- |
-| Hero background | 1920 × 1080 | `<video>` — uncomment/add a `<source>`; keep the poster |
-| Hero poster | 1920 × 1080 | Keep the `<link rel="preload">` in sync |
-| Open Graph share image | 1200 × 630 | Head meta, Twitter card and social sharing |
-| Story portrait | 900 × 1125 | About section, main image |
-| Story detail | 800 × 800 | About section, overlapping photo |
-| Gallery 01 | 900 × 1200 | Portrait |
-| Gallery 02 | 900 × 900 | Square |
-| Gallery 03 | 1200 × 800 | Reel/video — add a `<source>` to the `<video>` |
-| Gallery 04 | 900 × 1100 | Portrait |
-| Gallery 05 | 900 × 700 | Landscape |
-| Gallery 06 | 900 × 1200 | Portrait |
-| Gallery 07 | 1200 × 900 | Campaign/landscape |
-| Gallery 08 | 900 × 900 | Square |
-| Lightbox | — | Loads each item's `data-full`; replace those URLs with hi-res versions |
+| Hero poster (preloaded) | 1920 × 1080 | `coco-hero-poster.jpg` |
+| Hero background video | 1920 × 1080, 12 s | `coco-hero.mp4` |
+| Open Graph / Twitter image | 1200 × 630 | `coco-og.jpg` |
+| Story portrait | 900 × 1125 | `coco-story-portrait.jpg` |
+| Story detail | 800 × 800 | `coco-story-detail.jpg` |
+| Gallery 01 | 900 × 1200 (3:4) | `gallery-01.jpg` / `gallery-01-full.jpg` |
+| Gallery 02 | 900 × 900 (1:1) | `gallery-02.jpg` / `gallery-02-full.jpg` |
+| Gallery 03 — reel | 720 × 1280 (9:16) | `reel-viral.mp4` / `reel-viral.jpg` |
+| Gallery 04 | 900 × 1350 (2:3) | `gallery-04.jpg` / `gallery-04-full.jpg` |
+| Gallery 05 | 900 × 1125 (4:5) | `gallery-05.jpg` / `gallery-05-full.jpg` |
+| Gallery 06 — reel | 720 × 1280 (9:16) | `reel-sunbeam.mp4` / `reel-sunbeam.jpg` |
+| Gallery 07 | 900 × 1200 (3:4) | `gallery-07.jpg` / `gallery-07-full.jpg` |
+| Gallery 08 | 900 × 900 (1:1) | `gallery-08.jpg` / `gallery-08-full.jpg` |
+| Gallery 09 — reel | 720 × 1280 (9:16) | `reel-morning.mp4` / `reel-morning.jpg` |
+| Gallery 10 | 900 × 1200 (3:4) | `gallery-10.jpg` / `gallery-10-full.jpg` |
+| Gallery 11 | 900 × 1125 (4:5) | `gallery-11.jpg` / `gallery-11-full.jpg` |
+| Gallery 12 | 900 × 1350 (2:3) | `gallery-12.jpg` / `gallery-12-full.jpg` |
+| Lightbox | — | each item's `data-full` (hi-res still); reels use `data-video` |
+
+Every source photo is portrait, so gallery ratios are portrait/square: **3:4**, **4:5**, **2:3**,
+**1:1** and **9:16** for the vertical reels. When swapping an item, update the wrapper's `--ratio`,
+the `width`/`height` attributes and the `data-full` URL together so the masonry reserves the right space.
 
 ### Horizontal scroll journey
 
@@ -176,30 +178,21 @@ and position it in `scroll-fx.css`. Reusable icons come from the SVG sprite at t
 
 ### Images
 
-1. Put files in `public/media/` (served at `/media/...`) or use a CDN.
-2. Replace the `src` and `data-full` URLs. Keep the existing `width` and `height` attributes so the
-   layout reserves the correct space.
-3. If you change an item's aspect ratio, update both the wrapper's `--ratio` custom property and the
-   `width`/`height` attributes. The masonry grid relies on those values.
-4. Prefer `AVIF`/`WebP` with JPG fallbacks. Add `srcset`/`sizes` if you export multiple widths.
-5. Update `alt` text with a real description of Coco's photo.
+1. Files live in `public/media/` (served at `/media/...`).
+2. Each item keeps its `width` and `height` attributes so the layout reserves the correct space.
+3. The wrapper's `--ratio` custom property and the `width`/`height` attributes must match the asset's
+   real aspect ratio — the masonry grid relies on them.
+4. `data-full` points at the hi-res still used by the lightbox.
+5. `alt` text describes the actual photo.
 
 ### Videos
 
-**Hero:** add a source inside the hero `<video>`:
+**Hero:** a muted, looped, 12-second Ken-Burns clip built from the clean hero still
+(`coco-hero.mp4`, ~1.7 MB). The poster (`coco-hero-poster.jpg`) is preloaded for LCP.
 
-```html
-<source src="/media/coco-hero.mp4" type="video/mp4" />
-<source src="/media/coco-hero.webm" type="video/webm" />
-```
-
-Keep it muted, looped, `playsinline`, and ideally under ~8 MB. The poster is what most visitors will
-see first; make it a strong frame.
-
-**Gallery reel:** add a `<source>` to the gallery video. It is set to play on hover on precise
-pointers, and always shows the poster otherwise. Clicking the card opens the lightbox with the
-`data-full` image (the poster). If you want full video playback inside the lightbox, extend
-`src/js/gallery.js` to render a `<video>` element when `data-type="Reel"`.
+**Gallery reels:** three vertical reels (`reel-viral`, `reel-sunbeam`, `reel-morning`) play on hover
+on precise pointers and open in the lightbox, where `gallery.js` swaps the poster for the actual
+`<video>` (using each card's `data-video`).
 
 ### Audio & transcripts
 
@@ -239,6 +232,10 @@ Search these and replace:
 - **Grid:** 1320px max content width, fluid gutters, asymmetrical editorial sections.
 - **Styling:** CSS custom properties live in `src/styles/base.css`. Change the palette and radii there
   to re-theme the entire site.
+- **Navigation:** a transparent frosted-glass pill (`backdrop-filter`) whose tint and type colour
+  adapt to the section behind it — light type over dark artwork (hero, gallery), ink type over light
+  sections. Set `data-nav-tone="dark|light"` on a section and `src/js/nav.js` flips the header as it
+  scrolls past.
 - **Breakpoints:** 1180, 1080, 900, 720, 560, 400px, plus short-laptop and short-phone height queries.
 
 ---
@@ -261,8 +258,8 @@ Search these and replace:
   (well below the 0.1 “good” threshold). Re-check with real media and your production host.
 - Tested in Chrome only; Safari, Firefox and physical devices still need a pass.
 
-> Placeholder images depend on the placehold.co service. Replace them before launch so the site does
-> not rely on a third-party generator.
+> All media is now self-hosted in `public/media/` — the site no longer depends on
+> placehold.co. Re-run the checks above with the real assets before launch.
 
 ---
 

@@ -27,14 +27,11 @@
       content="145K+ Facebook followers. 25K+ on Instagram. One very serious commitment to napping in the sun. Meet Coco."
     />
     <meta property="og:url" content="https://cocotheorange.com/" />
-    <!-- MANUALLY INSERT COCO MEDIA HERE — Open Graph share image — 1200 × 630 -->
-    <meta
-      property="og:image"
-      content="https://placehold.co/1200x630/FF5A1F/1B120C?text=Coco+the+Orange%0A1200+x+630"
-    />
+    <!-- Open Graph share image — 1200 × 630 -->
+    <meta property="og:image" content="https://cocotheorange.com/media/coco-og.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Coco the Orange, an orange tabby cat, sitting in a sunbeam." />
+    <meta property="og:image:alt" content="Coco the Orange, an orange tabby cat, looking up into the light." />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -45,15 +42,15 @@
     />
     <meta
       name="twitter:image"
-      content="https://placehold.co/1200x630/FF5A1F/1B120C?text=Coco+the+Orange%0A1200+x+630"
+      content="https://cocotheorange.com/media/coco-og.jpg"
     />
 
-    <!-- MANUALLY INSERT COCO MEDIA HERE — HERO POSTER PRELOAD — 1920 × 1080
+    <!-- HERO POSTER PRELOAD — 1920 × 1080
          Keep this URL in sync with the hero video poster below for a faster LCP. -->
     <link
       rel="preload"
       as="image"
-      href="https://placehold.co/1920x1080/6B3D24/FBF1E1?text=Coco+Hero+Video%0A1920+x+1080"
+      href="/media/coco-hero-poster.jpg"
       fetchpriority="high"
     />
 
@@ -77,7 +74,7 @@
         "description": "Orange tabby cat, pet influencer and content creator with 145K+ Facebook followers and 25K+ Instagram followers.",
         "jobTitle": "Pet Influencer & Content Creator",
         "url": "https://cocotheorange.com/",
-        "image": "https://placehold.co/1200x1200/FFD34E/1B120C?text=Coco+the+Orange%0A1200+x+1200",
+        "image": "https://cocotheorange.com/media/coco-story-detail.jpg",
         "sameAs": [
           "https://www.facebook.com/search/top?q=cocotheorange",
           "https://www.instagram.com/cocotheorange/"
@@ -325,7 +322,7 @@
     <!-- ====================================================================
          HEADER
          ==================================================================== -->
-    <header class="site-nav" data-nav>
+    <header class="site-nav" data-nav data-tone="light">
       <div class="site-nav__inner">
         <a class="brand" href="#top" aria-label="Coco the Orange — back to top">
           <span class="brand__mark" aria-hidden="true">
@@ -411,14 +408,13 @@
       <!-- ==================================================================
            HERO
            ================================================================== -->
-      <section class="hero" id="hero" aria-labelledby="hero-title" data-hero>
+      <section class="hero" id="hero" aria-labelledby="hero-title" data-hero data-nav-tone="dark">
         <div class="hero__media">
-          <!-- MANUALLY INSERT COCO MEDIA HERE — HERO BACKGROUND — 1920 × 1080
-               Add your MP4/WebM source below the poster. Keep it muted, looped,
-               short and under ~8 MB for a fast first paint. -->
+          <!-- HERO BACKGROUND — 1920 × 1080
+               Muted, looped, under ~2 MB. The poster is the LCP frame. -->
           <video
             class="hero__video"
-            poster="https://placehold.co/1920x1080/6B3D24/FBF1E1?text=Coco+Hero+Video%0A1920+x+1080"
+            poster="/media/coco-hero-poster.jpg"
             autoplay
             muted
             loop
@@ -428,10 +424,8 @@
             aria-hidden="true"
             data-hero-video
           >
-            <!-- <source src="/media/coco-hero.mp4" type="video/mp4" /> -->
-            <!-- <source src="/media/coco-hero.webm" type="video/webm" /> -->
+            <source src="/media/coco-hero.mp4" type="video/mp4" />
           </video>
-          <!-- END MANUALLY INSERT COCO MEDIA HERE -->
         </div>
         <div class="hero__overlay" aria-hidden="true"></div>
 
@@ -568,7 +562,7 @@
       <!-- ==================================================================
            STATS
            ================================================================== -->
-      <section class="stats section" id="stats" aria-labelledby="stats-title">
+      <section class="stats section" id="stats" aria-labelledby="stats-title" data-nav-tone="light">
         <div class="fx-layer" aria-hidden="true">
           <span class="fx-orbit fx-orbit--stats" data-scroll-rotate="360"></span>
           <span class="fx-float fx-float--a" data-scroll-float="0.35" data-scroll-rotate="50">
@@ -686,7 +680,7 @@
       <!-- ==================================================================
            STORY / ABOUT
            ================================================================== -->
-      <section class="about section" id="story" aria-labelledby="story-title">
+      <section class="about section" id="story" aria-labelledby="story-title" data-nav-tone="light">
         <div class="fx-layer" aria-hidden="true">
           <span class="fx-float fx-float--a" data-scroll-float="0.3" data-scroll-rotate="60">
             <svg viewBox="0 0 32 32"><use href="#sparkle" /></svg>
@@ -702,35 +696,33 @@
                 <div class="about__photo-main">
                   <span class="tape tape--tl" aria-hidden="true"></span>
                   <span class="sticker about__sticker" aria-hidden="true">Certified good boy</span>
-                  <!-- MANUALLY INSERT COCO MEDIA HERE — STORY PORTRAIT — 900 × 1125 -->
+                  <!-- STORY PORTRAIT — 900 × 1125 -->
                   <img
-                    src="https://placehold.co/900x1125/FFB6C8/1B120C?text=Coco+Portrait+No.+1%0A900+x+1125"
-                    alt="Coco the orange tabby cat sitting in warm golden-hour light."
+                    src="/media/coco-story-portrait.jpg"
+                    alt="Coco in a black bow tie, sprawled beside a tipped vase of tulips."
                     width="900"
                     height="1125"
                     loading="lazy"
                     decoding="async"
                   />
-                  <!-- END MANUALLY INSERT COCO MEDIA HERE -->
                 </div>
                 <div class="about__photo-secondary">
-                  <!-- MANUALLY INSERT COCO MEDIA HERE — STORY DETAIL — 800 × 800 -->
+                  <!-- STORY DETAIL — 800 × 800 -->
                   <img
-                    src="https://placehold.co/800x800/A8E6C8/1B120C?text=Caught+Mid-Thought%0A800+x+800"
-                    alt="Coco caught mid-thought, looking off-camera with one ear tilted."
+                    src="/media/coco-story-detail.jpg"
+                    alt="Coco looking up and to the side, whiskers catching the light."
                     width="800"
                     height="800"
                     loading="lazy"
                     decoding="async"
                   />
-                  <!-- END MANUALLY INSERT COCO MEDIA HERE -->
                 </div>
                 <span class="about__paw" aria-hidden="true">
                   <svg viewBox="0 0 64 64"><use href="#paw" /></svg>
                 </span>
               </div>
               <p class="about__caption">
-                <span>Portrait No. 1 — golden hour, as usual</span>
+                <span>Portrait No. 1 — tulips were involved</span>
                 <span>Est. 2021</span>
               </p>
             </div>
@@ -820,6 +812,7 @@
         id="journey"
         aria-labelledby="journey-title"
         data-journey
+        data-nav-tone="light"
       >
         <div class="journey__sticky">
           <div class="journey__inner container">
@@ -931,7 +924,7 @@
       <!-- ==================================================================
            GALLERY
            ================================================================== -->
-      <section class="gallery section" id="gallery" aria-labelledby="gallery-title">
+      <section class="gallery section" id="gallery" aria-labelledby="gallery-title" data-nav-tone="dark">
         <div class="fx-layer" aria-hidden="true">
           <span class="fx-float fx-float--a" data-scroll-float="0.4" data-scroll-rotate="70">
             <svg viewBox="0 0 32 32"><use href="#sparkle" /></svg>
@@ -982,26 +975,24 @@
                 type="button"
                 data-gallery-item
                 data-type="Portrait"
-                data-caption="Sunbeam supervisor"
-                data-full="https://placehold.co/1600x2133/FFD34E/1B120C?text=Sunbeam+Supervisor%0A1600+x+2133"
-                aria-label="Open photo: Sunbeam supervisor"
+                data-caption="Illegally handsome — front camera, no filter"
+                data-full="./media/gallery-01-full.jpg"
+                aria-label="Open photo: Illegally handsome"
                 aria-haspopup="dialog"
               >
-                <span class="gallery__media" style="--ratio: 900 / 1200">
-                  <!-- MANUALLY INSERT COCO MEDIA HERE — GALLERY 01 — 900 × 1200 -->
+                <span class="gallery__media" style="--ratio: 3 / 4">
                   <img
-                    src="https://placehold.co/900x1200/FFD34E/1B120C?text=Sunbeam+Supervisor%0A900+x+1200"
-                    alt="Coco stretched out in a patch of afternoon sunlight."
+                    src="/media/gallery-01.jpg"
+                    alt="Coco the orange tabby staring straight into the camera, close up."
                     width="900"
                     height="1200"
                     loading="lazy"
                     decoding="async"
                   />
-                  <!-- END MANUALLY INSERT COCO MEDIA HERE -->
                 </span>
                 <span class="gallery__overlay" aria-hidden="true">
                   <span class="gallery__tag">01 / Portrait</span>
-                  <span class="gallery__title">Sunbeam supervisor</span>
+                  <span class="gallery__title">Illegally handsome</span>
                   <span class="gallery__arrow">
                     <svg viewBox="0 0 24 24"><use href="#arrow-up-right" /></svg>
                   </span>
@@ -1015,26 +1006,24 @@
                 type="button"
                 data-gallery-item
                 data-type="Portrait"
-                data-caption="The box inspector"
-                data-full="https://placehold.co/1600x1600/FFB6C8/1B120C?text=The+Box+Inspector%0A1600+x+1600"
-                aria-label="Open photo: The box inspector"
+                data-caption="Recharging the soul &amp; body"
+                data-full="./media/gallery-02-full.jpg"
+                aria-label="Open photo: Recharging the soul and body"
                 aria-haspopup="dialog"
               >
                 <span class="gallery__media" style="--ratio: 1 / 1">
-                  <!-- MANUALLY INSERT COCO MEDIA HERE — GALLERY 02 — 900 × 900 -->
                   <img
-                    src="https://placehold.co/900x900/FFB6C8/1B120C?text=The+Box+Inspector%0A900+x+900"
-                    alt="Coco peeking out of a cardboard box with wide eyes."
+                    src="/media/gallery-02.jpg"
+                    alt="Coco curled up asleep with his paw over his face on a blue blanket."
                     width="900"
                     height="900"
                     loading="lazy"
                     decoding="async"
                   />
-                  <!-- END MANUALLY INSERT COCO MEDIA HERE -->
                 </span>
                 <span class="gallery__overlay" aria-hidden="true">
                   <span class="gallery__tag">02 / Portrait</span>
-                  <span class="gallery__title">The box inspector</span>
+                  <span class="gallery__title">Recharge mode</span>
                   <span class="gallery__arrow">
                     <svg viewBox="0 0 24 24"><use href="#arrow-up-right" /></svg>
                   </span>
@@ -1048,18 +1037,17 @@
                 type="button"
                 data-gallery-item
                 data-type="Reel"
-                data-caption="Tuesday, 3:04 PM — the viral one"
-                data-full="https://placehold.co/1800x1200/FF5A1F/FBF1E1?text=Viral+Reel+%231%0A1800+x+1200"
-                aria-label="Open video: Tuesday at 3:04 PM, the viral reel"
+                data-caption="POV: the face of someone about to commit crimes at 200 mph"
+                data-full="./media/reel-viral.jpg"
+                data-video="./media/reel-viral.mp4"
+                aria-label="Open video: the viral reel"
                 aria-haspopup="dialog"
               >
-                <span class="gallery__media" style="--ratio: 3 / 2">
-                  <!-- MANUALLY INSERT COCO MEDIA HERE — GALLERY 03 (VIDEO) — 1200 × 800
-                       Add a <source> to the video below; the poster is the fallback. -->
+                <span class="gallery__media" style="--ratio: 9 / 16">
                   <video
-                    poster="https://placehold.co/1200x800/FF5A1F/FBF1E1?text=Viral+Reel+%231%0A1200+x+800"
-                    width="1200"
-                    height="800"
+                    poster="/media/reel-viral.jpg"
+                    width="720"
+                    height="1280"
                     muted
                     loop
                     playsinline
@@ -1068,9 +1056,8 @@
                     aria-hidden="true"
                     data-gallery-video
                   >
-                    <!-- <source src="/media/coco-viral-reel.mp4" type="video/mp4" /> -->
+                    <source src="/media/reel-viral.mp4" type="video/mp4" />
                   </video>
-                  <!-- END MANUALLY INSERT COCO MEDIA HERE -->
                   <span class="gallery__play" aria-hidden="true">
                     <svg viewBox="0 0 24 24"><use href="#play" /></svg>
                   </span>
@@ -1078,7 +1065,7 @@
                 </span>
                 <span class="gallery__overlay" aria-hidden="true">
                   <span class="gallery__tag">03 / Reel</span>
-                  <span class="gallery__title">Tuesday, 3:04 PM</span>
+                  <span class="gallery__title">The viral one</span>
                   <span class="gallery__arrow">
                     <svg viewBox="0 0 24 24"><use href="#arrow-up-right" /></svg>
                   </span>
@@ -1092,26 +1079,24 @@
                 type="button"
                 data-gallery-item
                 data-type="Portrait"
-                data-caption="Window watch"
-                data-full="https://placehold.co/1600x1956/B6DCF2/1B120C?text=Window+Watch%0A1600+x+1956"
-                aria-label="Open photo: Window watch"
+                data-caption="You look like an angel"
+                data-full="./media/gallery-04-full.jpg"
+                aria-label="Open photo: Angel face"
                 aria-haspopup="dialog"
               >
-                <span class="gallery__media" style="--ratio: 900 / 1100">
-                  <!-- MANUALLY INSERT COCO MEDIA HERE — GALLERY 04 — 900 × 1100 -->
+                <span class="gallery__media" style="--ratio: 2 / 3">
                   <img
-                    src="https://placehold.co/900x1100/B6DCF2/1B120C?text=Window+Watch%0A900+x+1100"
-                    alt="Coco silhouetted against a bright window, watching birds."
+                    src="/media/gallery-04.jpg"
+                    alt="Coco sitting upright and staring off-camera with wide, soft eyes."
                     width="900"
-                    height="1100"
+                    height="1350"
                     loading="lazy"
                     decoding="async"
                   />
-                  <!-- END MANUALLY INSERT COCO MEDIA HERE -->
                 </span>
                 <span class="gallery__overlay" aria-hidden="true">
                   <span class="gallery__tag">04 / Portrait</span>
-                  <span class="gallery__title">Window watch</span>
+                  <span class="gallery__title">Angel face</span>
                   <span class="gallery__arrow">
                     <svg viewBox="0 0 24 24"><use href="#arrow-up-right" /></svg>
                   </span>
@@ -1125,26 +1110,66 @@
                 type="button"
                 data-gallery-item
                 data-type="Portrait"
-                data-caption="Tuna o'clock"
-                data-full="https://placehold.co/1600x1244/FF8A5C/1B120C?text=Tuna+O%27Clock%0A1600+x+1244"
-                aria-label="Open photo: Tuna o'clock"
+                data-caption="Hide &amp; seek, but the cat heard &ldquo;find &amp; destroy&rdquo;"
+                data-full="./media/gallery-05-full.jpg"
+                aria-label="Open photo: Find and destroy"
                 aria-haspopup="dialog"
               >
-                <span class="gallery__media" style="--ratio: 900 / 700">
-                  <!-- MANUALLY INSERT COCO MEDIA HERE — GALLERY 05 — 900 × 700 -->
+                <span class="gallery__media" style="--ratio: 4 / 5">
                   <img
-                    src="https://placehold.co/900x700/FF8A5C/1B120C?text=Tuna+O%27Clock%0A900+x+700"
-                    alt="Coco waiting very patiently beside a bowl of tuna."
+                    src="/media/gallery-05.jpg"
+                    alt="Coco flat on a rug, chin down, mid-pounce gaze."
                     width="900"
-                    height="700"
+                    height="1125"
                     loading="lazy"
                     decoding="async"
                   />
-                  <!-- END MANUALLY INSERT COCO MEDIA HERE -->
                 </span>
                 <span class="gallery__overlay" aria-hidden="true">
                   <span class="gallery__tag">05 / Portrait</span>
-                  <span class="gallery__title">Tuna o'clock</span>
+                  <span class="gallery__title">Find &amp; destroy</span>
+                  <span class="gallery__arrow">
+                    <svg viewBox="0 0 24 24"><use href="#arrow-up-right" /></svg>
+                  </span>
+                </span>
+              </button>
+            </figure>
+
+            <figure class="gallery__item" data-reveal-child>
+              <button
+                class="gallery__button"
+                type="button"
+                data-gallery-item
+                data-type="Reel"
+                data-caption="You look like an angel — the five-million one"
+                data-full="./media/reel-sunbeam.jpg"
+                data-video="./media/reel-sunbeam.mp4"
+                aria-label="Open video: the five-million-view reel"
+                aria-haspopup="dialog"
+              >
+                <span class="gallery__media" style="--ratio: 9 / 16">
+                  <video
+                    poster="/media/reel-sunbeam.jpg"
+                    width="720"
+                    height="1280"
+                    muted
+                    loop
+                    playsinline
+                    preload="none"
+                    tabindex="-1"
+                    aria-hidden="true"
+                    data-gallery-video
+                  >
+                    <source src="/media/reel-sunbeam.mp4" type="video/mp4" />
+                  </video>
+                  <span class="gallery__play" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><use href="#play" /></svg>
+                  </span>
+                  <span class="gallery__play-label" aria-hidden="true">Play reel</span>
+                </span>
+                <span class="gallery__overlay" aria-hidden="true">
+                  <span class="gallery__tag">06 / Reel</span>
+                  <span class="gallery__title">Five million views</span>
                   <span class="gallery__arrow">
                     <svg viewBox="0 0 24 24"><use href="#arrow-up-right" /></svg>
                   </span>
@@ -1158,59 +1183,24 @@
                 type="button"
                 data-gallery-item
                 data-type="Portrait"
-                data-caption="Desk assistant"
-                data-full="https://placehold.co/1600x2133/F3E3CB/1B120C?text=Desk+Assistant%0A1600+x+2133"
-                aria-label="Open photo: Desk assistant"
+                data-caption="The details I never want to forget"
+                data-full="./media/gallery-07-full.jpg"
+                aria-label="Open photo: Low light"
                 aria-haspopup="dialog"
               >
-                <span class="gallery__media" style="--ratio: 900 / 1200">
-                  <!-- MANUALLY INSERT COCO MEDIA HERE — GALLERY 06 — 900 × 1200 -->
+                <span class="gallery__media" style="--ratio: 3 / 4">
                   <img
-                    src="https://placehold.co/900x1200/F3E3CB/1B120C?text=Desk+Assistant%0A900+x+1200"
-                    alt="Coco sitting on a desk next to a laptop, clearly in charge."
+                    src="/media/gallery-07.jpg"
+                    alt="Coco dozing in a cat bed in soft, low light."
                     width="900"
                     height="1200"
                     loading="lazy"
                     decoding="async"
                   />
-                  <!-- END MANUALLY INSERT COCO MEDIA HERE -->
                 </span>
                 <span class="gallery__overlay" aria-hidden="true">
-                  <span class="gallery__tag">06 / Portrait</span>
-                  <span class="gallery__title">Desk assistant</span>
-                  <span class="gallery__arrow">
-                    <svg viewBox="0 0 24 24"><use href="#arrow-up-right" /></svg>
-                  </span>
-                </span>
-              </button>
-            </figure>
-
-            <figure class="gallery__item" data-reveal-child>
-              <button
-                class="gallery__button"
-                type="button"
-                data-gallery-item
-                data-type="Campaign"
-                data-caption="Golden hour, brand campaign"
-                data-full="https://placehold.co/1800x1350/1B120C/FFD34E?text=Golden+Hour+Campaign%0A1800+x+1350"
-                aria-label="Open photo: Golden hour brand campaign"
-                aria-haspopup="dialog"
-              >
-                <span class="gallery__media" style="--ratio: 4 / 3">
-                  <!-- MANUALLY INSERT COCO MEDIA HERE — GALLERY 07 — 1200 × 900 -->
-                  <img
-                    src="https://placehold.co/1200x900/1B120C/FFD34E?text=Golden+Hour+Campaign%0A1200+x+900"
-                    alt="Coco in a warm golden-hour brand campaign portrait."
-                    width="1200"
-                    height="900"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <!-- END MANUALLY INSERT COCO MEDIA HERE -->
-                </span>
-                <span class="gallery__overlay" aria-hidden="true">
-                  <span class="gallery__tag">07 / Campaign</span>
-                  <span class="gallery__title">Golden hour</span>
+                  <span class="gallery__tag">07 / Portrait</span>
+                  <span class="gallery__title">Low light</span>
                   <span class="gallery__arrow">
                     <svg viewBox="0 0 24 24"><use href="#arrow-up-right" /></svg>
                   </span>
@@ -1224,26 +1214,159 @@
                 type="button"
                 data-gallery-item
                 data-type="Portrait"
-                data-caption="Outtakes"
-                data-full="https://placehold.co/1600x1600/E9C6A0/1B120C?text=Outtakes%0A1600+x+1600"
-                aria-label="Open photo: Outtakes"
+                data-caption="POV: attack mode engaged"
+                data-full="./media/gallery-08-full.jpg"
+                aria-label="Open photo: Attack mode"
                 aria-haspopup="dialog"
               >
                 <span class="gallery__media" style="--ratio: 1 / 1">
-                  <!-- MANUALLY INSERT COCO MEDIA HERE — GALLERY 08 — 900 × 900 -->
                   <img
-                    src="https://placehold.co/900x900/E9C6A0/1B120C?text=Outtakes%0A900+x+900"
-                    alt="A candid outtake of Coco mid-yawn."
+                    src="/media/gallery-08.jpg"
+                    alt="Coco peeking out from under a mound of bed covers."
                     width="900"
                     height="900"
                     loading="lazy"
                     decoding="async"
                   />
-                  <!-- END MANUALLY INSERT COCO MEDIA HERE -->
                 </span>
                 <span class="gallery__overlay" aria-hidden="true">
                   <span class="gallery__tag">08 / Portrait</span>
-                  <span class="gallery__title">Outtakes</span>
+                  <span class="gallery__title">Attack mode</span>
+                  <span class="gallery__arrow">
+                    <svg viewBox="0 0 24 24"><use href="#arrow-up-right" /></svg>
+                  </span>
+                </span>
+              </button>
+            </figure>
+
+            <figure class="gallery__item" data-reveal-child>
+              <button
+                class="gallery__button"
+                type="button"
+                data-gallery-item
+                data-type="Reel"
+                data-caption="I was about to call you, but I remembered you have fingers too"
+                data-full="./media/reel-morning.jpg"
+                data-video="./media/reel-morning.mp4"
+                aria-label="Open video: good morning reel"
+                aria-haspopup="dialog"
+              >
+                <span class="gallery__media" style="--ratio: 9 / 16">
+                  <video
+                    poster="/media/reel-morning.jpg"
+                    width="720"
+                    height="1280"
+                    muted
+                    loop
+                    playsinline
+                    preload="none"
+                    tabindex="-1"
+                    aria-hidden="true"
+                    data-gallery-video
+                  >
+                    <source src="/media/reel-morning.mp4" type="video/mp4" />
+                  </video>
+                  <span class="gallery__play" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><use href="#play" /></svg>
+                  </span>
+                  <span class="gallery__play-label" aria-hidden="true">Play reel</span>
+                </span>
+                <span class="gallery__overlay" aria-hidden="true">
+                  <span class="gallery__tag">09 / Reel</span>
+                  <span class="gallery__title">Good morning</span>
+                  <span class="gallery__arrow">
+                    <svg viewBox="0 0 24 24"><use href="#arrow-up-right" /></svg>
+                  </span>
+                </span>
+              </button>
+            </figure>
+
+            <figure class="gallery__item" data-reveal-child>
+              <button
+                class="gallery__button"
+                type="button"
+                data-gallery-item
+                data-type="Portrait"
+                data-caption="You adopted a cat and now you can&rsquo;t travel, get sick, die or be poor"
+                data-full="./media/gallery-10-full.jpg"
+                aria-label="Open photo: Family resemblance"
+                aria-haspopup="dialog"
+              >
+                <span class="gallery__media" style="--ratio: 3 / 4">
+                  <img
+                    src="/media/gallery-10.jpg"
+                    alt="Coco stretched out on a patterned throw, looking up at someone."
+                    width="900"
+                    height="1200"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <span class="gallery__overlay" aria-hidden="true">
+                  <span class="gallery__tag">10 / Portrait</span>
+                  <span class="gallery__title">Family resemblance</span>
+                  <span class="gallery__arrow">
+                    <svg viewBox="0 0 24 24"><use href="#arrow-up-right" /></svg>
+                  </span>
+                </span>
+              </button>
+            </figure>
+
+            <figure class="gallery__item" data-reveal-child>
+              <button
+                class="gallery__button"
+                type="button"
+                data-gallery-item
+                data-type="Portrait"
+                data-caption="I know I should sleep, but the voices in my head go on"
+                data-full="./media/gallery-11-full.jpg"
+                aria-label="Open photo: Big yawn"
+                aria-haspopup="dialog"
+              >
+                <span class="gallery__media" style="--ratio: 4 / 5">
+                  <img
+                    src="/media/gallery-11.jpg"
+                    alt="Coco mid-yawn with his eyes squeezed shut against a blanket."
+                    width="900"
+                    height="1125"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <span class="gallery__overlay" aria-hidden="true">
+                  <span class="gallery__tag">11 / Portrait</span>
+                  <span class="gallery__title">Big yawn</span>
+                  <span class="gallery__arrow">
+                    <svg viewBox="0 0 24 24"><use href="#arrow-up-right" /></svg>
+                  </span>
+                </span>
+              </button>
+            </figure>
+
+            <figure class="gallery__item" data-reveal-child>
+              <button
+                class="gallery__button"
+                type="button"
+                data-gallery-item
+                data-type="Portrait"
+                data-caption="POV: you have a cat with anxiety"
+                data-full="./media/gallery-12-full.jpg"
+                aria-label="Open photo: Window watch"
+                aria-haspopup="dialog"
+              >
+                <span class="gallery__media" style="--ratio: 2 / 3">
+                  <img
+                    src="/media/gallery-12.jpg"
+                    alt="Coco sitting alert beside a glass door, watching something outside."
+                    width="900"
+                    height="1350"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <span class="gallery__overlay" aria-hidden="true">
+                  <span class="gallery__tag">12 / Portrait</span>
+                  <span class="gallery__title">Window watch</span>
                   <span class="gallery__arrow">
                     <svg viewBox="0 0 24 24"><use href="#arrow-up-right" /></svg>
                   </span>
@@ -1262,7 +1385,7 @@
       <!-- ==================================================================
            COLLABORATIONS
            ================================================================== -->
-      <section class="collabs" id="collabs" aria-labelledby="collabs-title">
+      <section class="collabs" id="collabs" aria-labelledby="collabs-title" data-nav-tone="light">
         <svg class="collabs__watermark" viewBox="0 0 64 64" aria-hidden="true"><use href="#paw" /></svg>
         <div class="fx-layer" aria-hidden="true">
           <span class="fx-orbit fx-orbit--collabs" data-scroll-rotate="360"></span>
@@ -1396,7 +1519,7 @@
     <!-- ====================================================================
          FOOTER
          ==================================================================== -->
-    <footer class="site-footer" id="footer">
+    <footer class="site-footer" id="footer" data-nav-tone="light">
       <div class="fx-layer" aria-hidden="true">
         <span class="fx-float fx-float--a" data-scroll-float="0.25" data-scroll-rotate="50">
           <svg viewBox="0 0 32 32"><use href="#sparkle" /></svg>
@@ -1489,8 +1612,6 @@
         </button>
 
         <figure class="lightbox__figure">
-          <!-- MANUALLY INSERT COCO MEDIA HERE — LIGHTBOX IMAGE
-               This src is replaced by the selected gallery item's data-full URL. -->
           <img
             class="lightbox__img"
             data-lightbox-img
@@ -1499,7 +1620,15 @@
             width="1600"
             height="1200"
           />
-          <!-- END MANUALLY INSERT COCO MEDIA HERE -->
+          <video
+            class="lightbox__video"
+            data-lightbox-video
+            playsinline
+            muted
+            loop
+            controls
+            hidden
+          ></video>
           <figcaption class="lightbox__caption">
             <strong id="lightbox-title" data-lightbox-caption aria-live="polite">Coco the Orange</strong>
             <span data-lightbox-meta>Portrait</span>
@@ -1510,7 +1639,7 @@
           <button class="lightbox__nav" type="button" data-lightbox-prev aria-label="Previous item">
             <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#chevron-left" /></svg>
           </button>
-          <p class="lightbox__count" data-lightbox-count aria-hidden="true">01 / 08</p>
+          <p class="lightbox__count" data-lightbox-count aria-hidden="true">01 / 12</p>
           <button class="lightbox__nav" type="button" data-lightbox-next aria-label="Next item">
             <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#chevron-right" /></svg>
           </button>

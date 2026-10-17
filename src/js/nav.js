@@ -15,13 +15,56 @@ export function initNav({ lenis }) {
   const main = document.getElementById('main-content');
   const footer = document.getElementById('footer');
   const brand = nav.querySelector('.brand');
+  const inner = nav.querySelector('.site-nav__inner');
+
+  /* --- Backdrop tone ----------------------------------------------------
+     The glass pill is transparent, so its tint and type colour flip based on
+     whether a dark or light section sits behind it (see [data-nav-tone]). */
+  const toneNodes = [...document.querySelectorAll('[data-nav-tone]')];
+
+  const updateTone = () => {
+    if (!inner) return;
+
+    // The mobile overlay paints its own (butter) backdrop behind the nav.
+    if (menu?.classList.contains('is-open')) {
+      nav.dataset.tone = 'light';
+      return;
+    }
+
+    const rect = inner.getBoundingClientRect();
+    const probeY = rect.top + rect.height / 2;
+    let tone = 'light';
+
+    for (const node of toneNodes) {
+      const bounds = node.getBoundingClientRect();
+      if (bounds.top <= probeY && bounds.bottom >= probeY) {
+        tone = node.dataset.navTone || 'light';
+        break;
+      }
+    }
+
+    nav.dataset.tone = tone;
+  };
+
+  // rAF-throttle so the per-frame hit test never blocks scrolling.
+  let toneFrame = 0;
+  const scheduleTone = () => {
+    if (toneFrame) return;
+    toneFrame = window.requestAnimationFrame(() => {
+      toneFrame = 0;
+      updateTone();
+    });
+  };
 
   /* --- Scrolled state ---------------------------------------------------- */
   const updateScrollState = () => {
     nav.classList.toggle('is-scrolled', window.scrollY > 26);
+    scheduleTone();
   };
   updateScrollState();
+  updateTone();
   window.addEventListener('scroll', updateScrollState, { passive: true });
+  window.addEventListener('resize', scheduleTone, { passive: true });
 
   /* --- Active section ---------------------------------------------------- */
   const navLinks = [...nav.querySelectorAll('[data-nav-link]')];
@@ -94,6 +137,7 @@ export function initNav({ lenis }) {
     brand?.setAttribute('inert', '');
 
     lockScroll(lenis);
+    updateTone();
 
     window.setTimeout(() => {
       menuLinks[0]?.focus({ preventScroll: true });
@@ -116,6 +160,7 @@ export function initNav({ lenis }) {
     brand?.removeAttribute('inert');
 
     unlockScroll(lenis);
+    updateTone();
 
     if (restoreFocus) {
       window.setTimeout(() => toggle.focus({ preventScroll: true }), 20);
