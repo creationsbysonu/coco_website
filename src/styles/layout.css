@@ -662,6 +662,19 @@
   width: 46px;
 }
 
+.journey-card__image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  margin-top: 0.7rem;
+  background: var(--pink);
+}
+
+.journey-card__image--lg {
+  height: 260px;
+}
+
 .journey__hud {
   display: none;
 }
