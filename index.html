@@ -337,7 +337,7 @@
         <nav class="site-nav__links" aria-label="Primary">
           <a href="#story" data-nav-link>Story</a>
           <a href="#stats" data-nav-link>Numbers</a>
-          <a href="#sequence" data-nav-link>Sequence</a>
+          <a href="#journey" data-nav-link>Journey</a>
           <a href="#gallery" data-nav-link>Gallery</a>
           <a href="#collabs" data-nav-link>Collabs</a>
         </nav>
@@ -373,7 +373,7 @@
           <ul class="menu__links">
             <li><a href="#story" data-menu-link><i>01</i> Story</a></li>
             <li><a href="#stats" data-menu-link><i>02</i> Numbers</a></li>
-            <li><a href="#sequence" data-menu-link><i>03</i> Sequence</a></li>
+            <li><a href="#journey" data-menu-link><i>03</i> Journey</a></li>
             <li><a href="#gallery" data-menu-link><i>04</i> Gallery</a></li>
             <li><a href="#collabs" data-menu-link><i>05</i> Collabs</a></li>
           </ul>
@@ -569,6 +569,15 @@
            STATS
            ================================================================== -->
       <section class="stats section" id="stats" aria-labelledby="stats-title">
+        <div class="fx-layer" aria-hidden="true">
+          <span class="fx-orbit fx-orbit--stats" data-scroll-rotate="360"></span>
+          <span class="fx-float fx-float--a" data-scroll-float="0.35" data-scroll-rotate="50">
+            <svg viewBox="0 0 32 32"><use href="#sparkle" /></svg>
+          </span>
+          <span class="fx-float fx-float--b" data-scroll-float="-0.25" data-scroll-rotate="-40">
+            <svg viewBox="0 0 64 64"><use href="#paw" /></svg>
+          </span>
+        </div>
         <div class="container">
           <div class="section-head">
             <div>
@@ -599,7 +608,8 @@
                   </span>
                   <span class="stat__index">01 / 04</span>
                 </div>
-                <p class="stat__value" aria-label="More than 145 thousand Facebook followers">
+                <p class="stat__value">
+                  <span class="sr-only">More than 145 thousand Facebook followers</span>
                   <span aria-hidden="true" data-count="145" data-suffix="K+">145K+</span>
                 </p>
                 <h3 class="stat__label">Facebook followers</h3>
@@ -615,7 +625,8 @@
                   </span>
                   <span class="stat__index">02 / 04</span>
                 </div>
-                <p class="stat__value" aria-label="More than 25 thousand Instagram followers">
+                <p class="stat__value">
+                  <span class="sr-only">More than 25 thousand Instagram followers</span>
                   <span aria-hidden="true" data-count="25" data-suffix="K+">25K+</span>
                 </p>
                 <h3 class="stat__label">Instagram followers</h3>
@@ -631,7 +642,8 @@
                   </span>
                   <span class="stat__index">03 / 04</span>
                 </div>
-                <p class="stat__value" aria-label="3.4 million average monthly content reach">
+                <p class="stat__value">
+                  <span class="sr-only">3.4 million average monthly content reach</span>
                   <span aria-hidden="true" data-count="3.4" data-decimals="1" data-suffix="M">3.4M</span>
                 </p>
                 <h3 class="stat__label">Monthly content reach</h3>
@@ -647,7 +659,8 @@
                   </span>
                   <span class="stat__index">04 / 04</span>
                 </div>
-                <p class="stat__value" aria-label="12.4 percent average engagement rate">
+                <p class="stat__value">
+                  <span class="sr-only">12.4 percent average engagement rate</span>
                   <span aria-hidden="true" data-count="12.4" data-decimals="1" data-suffix="%">12.4%</span>
                 </p>
                 <h3 class="stat__label">Average engagement</h3>
@@ -660,6 +673,13 @@
             <span aria-hidden="true">✳</span> Audience figures last reviewed October 2026. A full media kit
             is available on request.
           </p>
+
+          <svg class="fx-squiggle" viewBox="0 0 620 44" fill="none" aria-hidden="true" data-scroll-draw>
+            <path
+              d="M4 32C58 6 118 6 178 24s118 22 178-2 118-24 178 6"
+              stroke-linecap="round"
+            />
+          </svg>
         </div>
       </section>
 
@@ -667,6 +687,14 @@
            STORY / ABOUT
            ================================================================== -->
       <section class="about section" id="story" aria-labelledby="story-title">
+        <div class="fx-layer" aria-hidden="true">
+          <span class="fx-float fx-float--a" data-scroll-float="0.3" data-scroll-rotate="60">
+            <svg viewBox="0 0 32 32"><use href="#sparkle" /></svg>
+          </span>
+          <span class="fx-float fx-float--b" data-scroll-float="-0.3" data-scroll-rotate="-50">
+            <svg viewBox="0 0 64 64"><use href="#paw" /></svg>
+          </span>
+        </div>
         <div class="container">
           <div class="about__grid">
             <div class="about__media" data-reveal>
@@ -782,9 +810,139 @@
       </section>
 
       <!-- ==================================================================
+           SCROLL JOURNEY
+           Pinned horizontal scroller: vertical scrolling slides five
+           "day in the life" cards sideways. Static grid fallback for
+           reduced motion / no-JS visitors.
+           ================================================================== -->
+      <section
+        class="journey"
+        id="journey"
+        aria-labelledby="journey-title"
+        data-journey
+      >
+        <div class="journey__sticky">
+          <div class="journey__inner container">
+            <header class="journey__header">
+              <p class="eyebrow" data-reveal>
+                <span class="eyebrow__dot" aria-hidden="true"></span>
+                03 — The journey
+              </p>
+              <h2 class="journey__title" id="journey-title" data-lines>
+                <span class="line-mask"><span class="line-inner">A day with</span></span>
+                <span class="line-mask"><span class="line-inner"><span class="accent">Coco.</span></span></span>
+              </h2>
+              <p class="journey__intro" data-reveal>
+                Keep scrolling — the day moves sideways. Five stops, from the first
+                sunbeam to lights-out.
+              </p>
+            </header>
+
+            <div class="journey__viewport">
+              <div class="journey__track" data-journey-track>
+                <article class="journey-card journey-card--butter" data-journey-card data-journey-label="The 6 a.m. alarm">
+                  <span class="journey-card__index" aria-hidden="true">01 / 05</span>
+                  <span class="journey-card__time">06:00</span>
+                  <h3 class="journey-card__title">The 6 a.m. alarm</h3>
+                  <p class="journey-card__copy">
+                    Coco sits on the human's chest and paws at their eyelids until
+                    breakfast happens. Negotiation is not on the menu.
+                  </p>
+                  <span class="journey-card__doodle" aria-hidden="true">
+                    <svg viewBox="0 0 64 64"><use href="#paw" /></svg>
+                  </span>
+                </article>
+
+                <article class="journey-card journey-card--sky" data-journey-card data-journey-label="Sunbeam patrol">
+                  <span class="journey-card__index" aria-hidden="true">02 / 05</span>
+                  <span class="journey-card__time">09:30</span>
+                  <h3 class="journey-card__title">Sunbeam patrol</h3>
+                  <p class="journey-card__copy">
+                    Every window in the house is inspected on a rotating schedule.
+                    The warm rectangle on the kitchen floor passes quality control.
+                  </p>
+                  <span class="journey-card__doodle" aria-hidden="true">
+                    <svg viewBox="0 0 32 32"><use href="#sparkle" /></svg>
+                  </span>
+                </article>
+
+                <article class="journey-card journey-card--pink" data-journey-card data-journey-label="Box QA shift">
+                  <span class="journey-card__index" aria-hidden="true">03 / 05</span>
+                  <span class="journey-card__time">13:15</span>
+                  <h3 class="journey-card__title">Box QA shift</h3>
+                  <p class="journey-card__copy">
+                    Any box that enters the house must be sat in, chewed at the
+                    corners and formally reviewed. Ratings average 4.9 paws.
+                  </p>
+                  <span class="journey-card__doodle journey-card__doodle--lg" aria-hidden="true">
+                    <svg viewBox="0 0 64 64"><use href="#paw" /></svg>
+                  </span>
+                </article>
+
+                <article class="journey-card journey-card--mint" data-journey-card data-journey-label="Window commentary">
+                  <span class="journey-card__index" aria-hidden="true">04 / 05</span>
+                  <span class="journey-card__time">17:40</span>
+                  <h3 class="journey-card__title">Window commentary</h3>
+                  <p class="journey-card__copy">
+                    Birds, leaves, one very suspicious pigeon. Coco provides
+                    running commentary at volumes only the neighbours can hear.
+                  </p>
+                  <span class="journey-card__doodle" aria-hidden="true">
+                    <svg viewBox="0 0 120 80"><use href="#fish" /></svg>
+                  </span>
+                </article>
+
+                <article class="journey-card journey-card--cream" data-journey-card data-journey-label="Lights out">
+                  <span class="journey-card__index" aria-hidden="true">05 / 05</span>
+                  <span class="journey-card__time">22:30</span>
+                  <h3 class="journey-card__title">Lights out</h3>
+                  <p class="journey-card__copy">
+                    Curl into the perfect donut, purr once for the road, and dream
+                    about tomorrow's sunbeam. Repeat at 6 a.m.
+                  </p>
+                  <span class="journey-card__doodle" aria-hidden="true">
+                    <svg viewBox="0 0 32 32"><use href="#sparkle" /></svg>
+                  </span>
+                </article>
+              </div>
+            </div>
+
+            <div class="journey__hud">
+              <span class="journey__hint" aria-hidden="true">Scroll to travel</span>
+              <div
+                class="journey__bar"
+                role="progressbar"
+                aria-label="Day journey progress"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+                data-journey-progressbar
+              >
+                <span class="journey__bar-fill" data-journey-bar></span>
+              </div>
+              <span class="journey__count" aria-hidden="true">
+                Stop <span data-journey-index>01</span> / <span data-journey-total>05</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
            GALLERY
            ================================================================== -->
       <section class="gallery section" id="gallery" aria-labelledby="gallery-title">
+        <div class="fx-layer" aria-hidden="true">
+          <span class="fx-float fx-float--a" data-scroll-float="0.4" data-scroll-rotate="70">
+            <svg viewBox="0 0 32 32"><use href="#sparkle" /></svg>
+          </span>
+          <span class="fx-float fx-float--b" data-scroll-float="-0.3" data-scroll-rotate="-60">
+            <svg viewBox="0 0 120 80"><use href="#fish" /></svg>
+          </span>
+          <span class="fx-float fx-float--c" data-scroll-float="0.25" data-scroll-rotate="80">
+            <svg viewBox="0 0 64 64"><use href="#paw" /></svg>
+          </span>
+        </div>
         <div class="container">
           <div class="section-head">
             <div>
@@ -1106,6 +1264,15 @@
            ================================================================== -->
       <section class="collabs" id="collabs" aria-labelledby="collabs-title">
         <svg class="collabs__watermark" viewBox="0 0 64 64" aria-hidden="true"><use href="#paw" /></svg>
+        <div class="fx-layer" aria-hidden="true">
+          <span class="fx-orbit fx-orbit--collabs" data-scroll-rotate="360"></span>
+          <span class="fx-float fx-float--a" data-scroll-float="0.3" data-scroll-rotate="40">
+            <svg viewBox="0 0 64 64"><use href="#paw" /></svg>
+          </span>
+          <span class="fx-float fx-float--b" data-scroll-float="-0.3" data-scroll-rotate="-60">
+            <svg viewBox="0 0 32 32"><use href="#sparkle" /></svg>
+          </span>
+        </div>
 
         <div class="container">
           <div class="collabs__grid">
@@ -1215,6 +1382,13 @@
               <li class="partners__item">Travel &amp; lifestyle</li>
             </ul>
           </div>
+
+          <svg class="fx-squiggle" viewBox="0 0 620 44" fill="none" aria-hidden="true" data-scroll-draw>
+            <path
+              d="M4 32C58 6 118 6 178 24s118 22 178-2 118-24 178 6"
+              stroke-linecap="round"
+            />
+          </svg>
         </div>
       </section>
     </main>
@@ -1223,6 +1397,11 @@
          FOOTER
          ==================================================================== -->
     <footer class="site-footer" id="footer">
+      <div class="fx-layer" aria-hidden="true">
+        <span class="fx-float fx-float--a" data-scroll-float="0.25" data-scroll-rotate="50">
+          <svg viewBox="0 0 32 32"><use href="#sparkle" /></svg>
+        </span>
+      </div>
       <div class="container">
         <div class="footer__top">
           <div>
@@ -1342,6 +1521,17 @@
     <!-- Custom cursor (only enabled on precise pointers). -->
     <div class="cursor" data-cursor aria-hidden="true">
       <svg class="cursor__paw" viewBox="0 0 64 64"><use href="#paw" /></svg>
+    </div>
+
+    <!-- Scroll progress: a paw making its way down the page. -->
+    <div class="scroll-progress" data-scroll-progress aria-hidden="true">
+      <div class="scroll-progress__rail">
+        <span class="scroll-progress__fill" data-scroll-progress-fill></span>
+        <span class="scroll-progress__paw">
+          <svg viewBox="0 0 64 64"><use href="#paw" /></svg>
+        </span>
+      </div>
+      <span class="scroll-progress__value"><span data-scroll-progress-value>0</span>%</span>
     </div>
 
     <noscript>

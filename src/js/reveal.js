@@ -87,6 +87,43 @@ export function initReveals() {
       });
     });
 
+    /* --- Staggered hero title split reveal ---------------------------- */
+    gsap.matchMedia().add('(min-width: 768px)', () => {
+      const heroTitle = document.querySelector('.hero__title');
+      if (!heroTitle) return;
+
+      const lines = heroTitle.querySelectorAll('.line-mask .line-inner');
+      if (!lines.length) return;
+
+      gsap.from(lines, {
+        yPercent: 115,
+        autoAlpha: 0,
+        duration: 1.3,
+        stagger: 0.08,
+        ease: 'power4.out',
+        scrollTrigger: {
+          trigger: heroTitle,
+          start: 'top 90%',
+          end: 'bottom top',
+          scrub: 0.4,
+          invalidateOnRefresh: true,
+        },
+      });
+    });
+
+    /* --- Subtle pulse on orange accent dots ---------------------------- */
+    gsap.matchMedia().add('(min-width: 768px)', () => {
+      gsap.utils.toArray('.accent-dot').forEach((dot) => {
+        gsap.to(dot, {
+          scale: 1.2,
+          duration: 2,
+          repeat: -1,
+          ease: 'power1.inOut',
+          yoyo: true,
+        });
+      });
+    });
+
     /* --- Bouncy footer wordmark ----------------------------------------- */
     const footerLetters = gsap.utils.toArray('.wordmark__letter');
     if (footerLetters.length) {

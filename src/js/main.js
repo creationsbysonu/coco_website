@@ -19,6 +19,8 @@ import { initCounters } from './counters.js';
 import { initGallery } from './gallery.js';
 import { initMagnetic } from './magnetic.js';
 import { initBackToTop } from './back-to-top.js';
+import { initJourney } from './journey.js';
+import { initScrollFx } from './scroll-fx.js';
 import { initPreloader } from './preloader.js';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -32,12 +34,16 @@ initNav({ lenis });
 initAnchorNavigation(lenis);
 initCursor();
 
+// Establish the tall pinned section before reveal triggers measure the page.
+initJourney();
+
 const hero = initHero();
 initReveals();
 initCounters();
 initGallery({ lenis });
 initMagnetic();
 initBackToTop({ lenis });
+initScrollFx();
 
 // The hero starts as the preloader curtain lifts.
 initPreloader({ lenis }).then(() => {

@@ -2,7 +2,8 @@
 
 A single-page, high-end portfolio for Coco the Orange, the internet's favorite orange cat.
 Built as a static site with **Vite, GSAP and Lenis**, with a playful editorial design system,
-custom paw cursor, preloader, scroll-driven animation and an accessible media gallery.
+custom paw cursor, preloader, scroll-driven animation, a pinned 120-frame scrollytelling
+sequence and an accessible media gallery.
 
 ---
 
@@ -23,9 +24,15 @@ Node 20.19+ is recommended (Vite 8 requirement).
 
 **Motion & interaction**
 
-- Lenis smooth scrolling, synced to GSAP's ticker and ScrollTrigger.
+- Lenis inertial scrolling (`lerp: 0.09`), synced to GSAP's ticker and ScrollTrigger.
 - A custom preloader with progress, a curtain exit and a hero intro that starts underneath it.
+- **Horizontal scroll journey** — a pinned “A day with Coco.” stage. Vertical scrolling slides
+  five day-in-the-life cards sideways (Apple-style), with the active card lifting as it reaches
+  centre and a progress HUD tracking the five stops.
 - GSAP scroll reveals: masked headline lines, staggered cards/facts/gallery items and a footer wordmark.
+- **Scroll FX layers** — a fixed progress "paw trail" rail with a live percentage, parallax doodles
+  that drift and rotate across sections, self-drawing SVG squiggles, slow orbit rings and
+  velocity-reactive ticker shearing.
 - Parallax cartoon doodles (fish, yarn, paws, sparkles) on the hero.
 - Rotating follower badge and an infinite ticker.
 - Scroll-triggered stat counters.
@@ -51,12 +58,17 @@ Node 20.19+ is recommended (Vite 8 requirement).
 - Counter values expose their final values through accessible labels.
 - Full `prefers-reduced-motion` support: no preloader, no parallax, no custom cursor, no smooth
   scroll, no videos playing automatically and instant reveal states.
+- The scroll journey becomes a normal card grid for reduced motion: no pinning, no sideways scrub,
+  all five stops visible. It also degrades to this layout with JS off.
+- The journey HUD exposes progress through an ARIA progressbar with stop-based `aria-valuetext`.
 
 **Performance**
 
 - No layout shift caused by media: every image/video has reserved aspect ratio or intrinsic dimensions.
 - Below-the-fold images are lazy-loaded and decoded asynchronously.
 - Animations use transform/opacity only; ScrollTrigger is refreshed after fonts load.
+- The horizontal journey animates a single `translateX` on the track (transform-only, GPU-friendly)
+  and needs zero media — the whole section is markup and CSS.
 - Lenis and GSAP are bundled locally (no third-party script CDNs).
 - The hero video is capped with `preload="metadata"` and left muted/looping.
 
@@ -78,6 +90,7 @@ Node 20.19+ is recommended (Vite 8 requirement).
 │   │   ├── base.css            # Tokens, reset, typography, a11y, utilities
 │   │   ├── components.css      # Buttons, nav, cursor, preloader, cards, gallery, lightbox
 │   │   ├── layout.css          # Hero, sections and footer composition
+│   │   ├── scroll-fx.css       # Progress rail + scroll-linked decorative graphics
 │   │   └── responsive.css      # Tablet, mobile and short-viewport refinements
 │   └── js/
 │       ├── main.js             # App entry and module orchestration
@@ -87,7 +100,9 @@ Node 20.19+ is recommended (Vite 8 requirement).
 │       ├── nav.js              # Sticky nav state, active section, mobile menu
 │       ├── hero.js             # Hero entrance timeline
 │       ├── reveal.js           # Scroll reveals, line masks, parallax, wordmark
+│       ├── scroll-fx.js        # Progress rail, parallax doodles, drawing SVGs, marquee velocity
 │       ├── counters.js         # Animated stats
+│       ├── journey.js          # Pinned horizontal scroller (sideways card track)
 │       ├── gallery.js          # Masonry lightbox and hover video previews
 │       ├── magnetic.js         # Magnetic button effect
 │       ├── back-to-top.js      # Footer scroll-to-top control
@@ -127,6 +142,37 @@ Search `index.html` for `MANUALLY INSERT COCO MEDIA HERE` to find every slot.
 | Gallery 07 | 1200 × 900 | Campaign/landscape |
 | Gallery 08 | 900 × 900 | Square |
 | Lightbox | — | Loads each item's `data-full`; replace those URLs with hi-res versions |
+
+### Horizontal scroll journey
+
+The “A day with Coco.” section is a pinned horizontal scroller: while the section is pinned,
+vertical scrolling translates the card track sideways (`.journey__track`), scrubbed with GSAP
+ScrollTrigger and synced to Lenis. The active card lifts slightly as it reaches the centre, and the
+HUD tracks stop `01 / 05` with an ARIA progressbar.
+
+- Cards are plain markup — add or reorder `<article class="journey-card">` elements inside
+  `.journey__track`; the section height and travel distance are measured automatically in JS.
+- Reduced-motion visitors (and JS-off visitors) get the cards as a normal responsive grid — no
+  pinning, no sideways motion.
+- Styling lives in `layout.css` (`.journey` rules); breakpoint tweaks live in `responsive.css`.
+
+### Scroll FX layers
+
+`src/js/scroll-fx.js` drives a set of graphic effects on top of the core reveals. All of them are
+transform/opacity-only, scrubbed to scroll, and disabled under `prefers-reduced-motion`:
+
+- **Progress rail** — a fixed paw (`data-scroll-progress`) travels down a rail with a live percentage.
+- **Parallax doodles** — any element with `data-scroll-float="<speed>"` drifts vertically and, with
+  `data-scroll-rotate="<deg>"`, rotates as its section passes. Add them in a `.fx-layer` inside any
+  `position: relative` section; the layer clips overflow and stays behind the content.
+- **Self-drawing squiggles** — an SVG with `data-scroll-draw` grows its strokes as the section scrolls
+  (`stroke-dasharray`/`stroke-dashoffset` are measured per shape).
+- **Orbit rings** — `data-scroll-rotate="<deg>"` on an element without `data-scroll-float` spins it.
+- **Velocity shearing** — the marquee groups shear subtly with scroll velocity.
+
+To add a doodle, drop a `<span class="fx-float">` (holding an inline SVG) into a section's `.fx-layer`
+and position it in `scroll-fx.css`. Reusable icons come from the SVG sprite at the top of `index.html`
+(`#paw`, `#sparkle`, `#fish`, `#yarn`).
 
 ### Images
 
@@ -202,10 +248,18 @@ Search these and replace:
 - Production build passes (`npm run build`).
 - Interaction checks in headless Chrome: preloader, anchors, counters, lightbox open/next/Escape,
   focus return, back-to-top, mobile menu, scroll locking and reduced-motion mode.
-- axe-core WCAG 2 A/AA scan: **0 violations** on the page, the open mobile menu and the open lightbox.
-- Layout verified at 1440×1000, 1366×768, 1440×700, 768×900, 390×844, 390×667 and 320×640.
-- Measured CLS on the local production preview: **~0.026** (well below the 0.1 “good” threshold).
-  Re-check with real media and your production host.
+- Sequence checks at 25 / 50 / 75 / 100% scroll progress: sticky stage stays pinned, frame counter
+  advances 001 → 120, chapter cards crossfade, progressbar `aria-valuenow` tracks the scrub and the
+  **Sequence** nav item becomes current. Real-frame mode was verified with a 24-frame local test set
+  (all requests completed, loader hid, total and counter updated).
+- Reduced-motion and JS-off layouts were checked: the section is unpinned, all three chapters are
+  visible and the static illustration is drawn. No horizontal overflow at 1440×1000, 900×1000,
+  390×844 or 320×640.
+- axe-core WCAG 2 A/AA scan: **0 violations** on the page in normal motion and reduced motion,
+  including the open mobile menu and lightbox checks from the base build.
+- Measured CLS on the local production preview after load and a full scroll pass: **~0.027**
+  (well below the 0.1 “good” threshold). Re-check with real media and your production host.
+- Tested in Chrome only; Safari, Firefox and physical devices still need a pass.
 
 > Placeholder images depend on the placehold.co service. Replace them before launch so the site does
 > not rely on a third-party generator.
