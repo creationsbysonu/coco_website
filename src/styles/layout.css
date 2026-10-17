@@ -567,13 +567,13 @@
 }
 
 .journey__header {
-  max-width: 700px;
+  max-width: 800px;
 }
 
 .journey__title {
-  margin-top: 1rem;
-  font-size: clamp(2.8rem, 6.6vw, 5.6rem);
-  line-height: 0.88;
+  margin-top: 1.5rem;
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 0.92;
 }
 
 .journey__title .accent {
@@ -582,10 +582,10 @@
 
 .journey__intro {
   max-width: 46ch;
-  margin-top: 1.2rem;
+  margin-top: 1.6rem;
   color: rgb(27 18 12 / 74%);
-  font-size: clamp(0.96rem, 1.1vw, 1.06rem);
-  line-height: 1.65;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  line-height: 1.75;
 }
 
 .journey__viewport {
