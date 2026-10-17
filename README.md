@@ -123,27 +123,23 @@ Real Coco media lives in `public/media/` and is wired into `index.html` (served 
 | Slot | Size | File |
 | --- | --- | --- |
 | Hero poster (preloaded) | 1920 × 1080 | `coco-hero-poster.jpg` |
-| Hero background video | 1920 × 1080, 12 s | `coco-hero.mp4` |
+| Hero background video | 1920 × 1080 | `coco-hero.mp4` (real reel, blurred fill) |
 | Open Graph / Twitter image | 1200 × 630 | `coco-og.jpg` |
 | Story portrait | 900 × 1125 | `coco-story-portrait.jpg` |
 | Story detail | 800 × 800 | `coco-story-detail.jpg` |
-| Gallery 01 | 900 × 1200 (3:4) | `gallery-01.jpg` / `gallery-01-full.jpg` |
-| Gallery 02 | 900 × 900 (1:1) | `gallery-02.jpg` / `gallery-02-full.jpg` |
-| Gallery 03 — reel | 720 × 1280 (9:16) | `reel-viral.mp4` / `reel-viral.jpg` |
-| Gallery 04 | 900 × 1350 (2:3) | `gallery-04.jpg` / `gallery-04-full.jpg` |
-| Gallery 05 | 900 × 1125 (4:5) | `gallery-05.jpg` / `gallery-05-full.jpg` |
-| Gallery 06 — reel | 720 × 1280 (9:16) | `reel-sunbeam.mp4` / `reel-sunbeam.jpg` |
-| Gallery 07 | 900 × 1200 (3:4) | `gallery-07.jpg` / `gallery-07-full.jpg` |
-| Gallery 08 | 900 × 900 (1:1) | `gallery-08.jpg` / `gallery-08-full.jpg` |
-| Gallery 09 — reel | 720 × 1280 (9:16) | `reel-morning.mp4` / `reel-morning.jpg` |
-| Gallery 10 | 900 × 1200 (3:4) | `gallery-10.jpg` / `gallery-10-full.jpg` |
-| Gallery 11 | 900 × 1125 (4:5) | `gallery-11.jpg` / `gallery-11-full.jpg` |
+| Gallery 01, 04, 07, 10 | 900 × 1200 / 1350 (3:4, 2:3) | `gallery-0*.jpg` / `gallery-*-full.jpg` |
+| Gallery 02, 08 | 900 × 900 (1:1) | `gallery-0*.jpg` / `gallery-*-full.jpg` |
+| Gallery 05, 11 | 900 × 1125 (4:5) | `gallery-1*.jpg` / `gallery-*-full.jpg` |
 | Gallery 12 | 900 × 1350 (2:3) | `gallery-12.jpg` / `gallery-12-full.jpg` |
+| Gallery reels (x6) | 720 × 1280 (9:16) | `reel-*.mp4` / `reel-*.jpg` |
 | Lightbox | — | each item's `data-full` (hi-res still); reels use `data-video` |
 
 Every source photo is portrait, so gallery ratios are portrait/square: **3:4**, **4:5**, **2:3**,
 **1:1** and **9:16** for the vertical reels. When swapping an item, update the wrapper's `--ratio`,
 the `width`/`height` attributes and the `data-full` URL together so the masonry reserves the right space.
+
+**Reels in the gallery:** `reel-viral`, `reel-sunbeam`, `reel-anxiety`, `reel-10m`,
+`reel-airplane`, `reel-face` — each plays on hover (precise pointers) and in the lightbox.
 
 ### Horizontal scroll journey
 
@@ -187,12 +183,12 @@ and position it in `scroll-fx.css`. Reusable icons come from the SVG sprite at t
 
 ### Videos
 
-**Hero:** a muted, looped, 12-second Ken-Burns clip built from the clean hero still
-(`coco-hero.mp4`, ~1.7 MB). The poster (`coco-hero-poster.jpg`) is preloaded for LCP.
+**Hero:** a muted, looped real reel centred over a blurred, darkened fill (`coco-hero.mp4`, ~2.5 MB).
+The poster (`coco-hero-poster.jpg`) is preloaded for LCP.
 
-**Gallery reels:** three vertical reels (`reel-viral`, `reel-sunbeam`, `reel-morning`) play on hover
-on precise pointers and open in the lightbox, where `gallery.js` swaps the poster for the actual
-`<video>` (using each card's `data-video`).
+**Gallery reels:** six vertical reels (`reel-*`) play on hover on precise pointers and open in the
+lightbox, where `gallery.js` swaps the poster for the actual `<video>` (using each card's
+`data-video`).
 
 ### Audio & transcripts
 
