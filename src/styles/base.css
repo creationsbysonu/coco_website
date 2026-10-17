@@ -1,0 +1,356 @@
+/* ==========================================================================
+   COCO THE ORANGE — BASE
+   Design tokens, reset, typography, accessibility and shared primitives.
+   ========================================================================== */
+
+:root {
+  /* --- Brand palette --------------------------------------------------- */
+  --ink: #1b120c;
+  --ink-soft: #3b2a20;
+  --cream: #fbf1e1;
+  --cream-deep: #f3e3cb;
+  --paper: #fffcf6;
+  --orange: #ff5a1f;
+  --orange-deep: #a33200;
+  --orange-soft: #ff8a5c;
+  --butter: #ffd34e;
+  --pink: #ffb6c8;
+  --mint: #a8e6c8;
+  --sky: #b6dcf2;
+
+  --line: rgb(27 18 12 / 14%);
+  --line-strong: rgb(27 18 12 / 28%);
+  --line-light: rgb(251 241 225 / 22%);
+
+  /* --- Typography ------------------------------------------------------ */
+  --font-display: "Bricolage Grotesque", "Arial Black", "Helvetica Neue", sans-serif;
+  --font-accent: "Shrikhand", "Georgia", serif;
+  --font-body: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+
+  /* --- Layout ---------------------------------------------------------- */
+  --maxw: 1320px;
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --nav-h: 64px;
+  --section-y: clamp(5.5rem, 11vw, 9.5rem);
+
+  /* --- Shape & motion -------------------------------------------------- */
+  --radius-sm: 0.85rem;
+  --radius-md: 1.4rem;
+  --radius-lg: 2rem;
+  --radius-pill: 999px;
+  --shadow-lift: 0 22px 50px -22px rgb(27 18 12 / 45%);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* --- Reset ------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  overflow-x: clip;
+  scrollbar-gutter: stable;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+html.is-locked,
+html.is-locked body {
+  overflow: hidden;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: clip;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Paper-grain overlay: pure CSS, fixed, no layout or paint cost on scroll. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  pointer-events: none;
+  opacity: 0.032;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img,
+video {
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+::selection {
+  background: var(--orange);
+  color: var(--paper);
+}
+
+/* Subtle branded scrollbar (progressive enhancement). */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(27 18 12 / 30%);
+  border: 2px solid var(--cream-deep);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--orange);
+}
+
+/* --- Type scale -------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+.display-xl {
+  font-size: clamp(3rem, 8.2vw, 7.4rem);
+  line-height: 0.88;
+  letter-spacing: -0.05em;
+}
+
+.display-lg {
+  font-size: clamp(2.6rem, 5.6vw, 4.9rem);
+  line-height: 0.94;
+}
+
+.display-md {
+  font-size: clamp(2rem, 3.4vw, 3.1rem);
+  line-height: 1;
+}
+
+.accent {
+  font-family: var(--font-accent);
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--orange);
+}
+
+/* --- Accessibility ----------------------------------------------------- */
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.9rem;
+  left: 0.9rem;
+  z-index: 3000;
+  padding: 0.8rem 1.2rem;
+  border-radius: var(--radius-pill);
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 0.8rem;
+  font-weight: 700;
+  transform: translateY(-180%);
+  transition: transform 0.3s var(--ease-out);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline-color: var(--butter);
+}
+
+:focus-visible {
+  outline: 3px solid var(--orange-deep);
+  outline-offset: 3px;
+}
+
+.gallery :focus-visible,
+.hero :focus-visible {
+  outline-color: var(--butter);
+}
+
+/* Light sections need a dark ring; orange sections use ink for 3:1+ contrast. */
+.collabs :focus-visible,
+.site-footer :focus-visible {
+  outline-color: var(--ink);
+}
+
+.lightbox :focus-visible {
+  outline-color: var(--butter);
+}
+
+/* Respect the user's motion preference everywhere. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --- Layout primitives ------------------------------------------------- */
+.container {
+  width: min(calc(100% - (var(--gutter) * 2)), var(--maxw));
+  margin-inline: auto;
+}
+
+.section {
+  position: relative;
+  padding-block: var(--section-y);
+}
+
+.section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: end;
+}
+
+.section-head__copy {
+  max-width: 40ch;
+  padding-bottom: 0.35rem;
+  color: rgb(27 18 12 / 68%);
+  font-size: clamp(0.98rem, 1.1vw, 1.08rem);
+}
+
+.section-title {
+  margin-top: 1.1rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.eyebrow__dot {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--orange);
+}
+
+.eyebrow--light {
+  color: rgb(251 241 225 / 82%);
+}
+
+.eyebrow--light .eyebrow__dot {
+  background: var(--butter);
+}
+
+/* Masked lines used by the GSAP line reveals. */
+.line-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.line-inner {
+  display: block;
+  will-change: transform;
+}
+
+/* Low-key dotted texture used in a few sections. */
+.dot-grid {
+  background-image: radial-gradient(rgb(27 18 12 / 18%) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+/* --- Lenis integration (the essentials from lenis/dist/lenis.css) ------- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+

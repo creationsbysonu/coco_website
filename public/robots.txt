@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Update this URL once the production domain is confirmed.
+Sitemap: https://cocotheorange.com/sitemap.xml

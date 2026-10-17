@@ -1,0 +1,9 @@
+/* ==========================================================================
+   COCO THE ORANGE — STYLESHEET ENTRY
+   Order matters: tokens and primitives first, then components and sections.
+   ========================================================================== */
+
+@import "./base.css";
+@import "./components.css";
+@import "./layout.css";
+@import "./responsive.css";
