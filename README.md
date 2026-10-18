@@ -201,7 +201,7 @@ transcript when you publish the real asset.
 
 Search these and replace:
 
-- **Contact email** — `hello@cocotheorange.com` appears in the menu, collaboration CTAs, footer and
+- **Contact email** — `cocotheorange99@gmail.com` appears in the menu, collaboration CTAs, footer and
   mail links. Replace all instances.
 - **Domain** — canonical, Open Graph URL, JSON-LD `url`, `public/robots.txt` and
   `public/sitemap.xml` currently use `https://cocotheorange.com/`.
